@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.loginBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    padding: 2rem;
+    margin-top: 7%;
+    box-shadow: 6px 5px 11px 0px rgba(54,54,54,0.81), -6px -5px 11px 0px rgba(54,54,54,0.81);
+    border-radius: 10%;
+    height: 350px;
+    width: 400px;
+}
+
+form h3 {
+    font-family: monospace;
+    font-size: 2rem;
+    margin: 1.5rem;
+    font-weight: 900;
+    text-align: center;
+}
+
+.usermame, .password {
+    margin: 10px 0;
+    
+}
+input {
+    width: 300px;
+    height: 33px;
+    padding: 3px;
+    font-size: 1rem;
+}
+
+input[type=submit] {
+    cursor: pointer;
+    background-color: #2364dd;
+    border: none;
+    color: #fff;    
+}
+
+input[type=submit]:hover {
+    background-color: #063388;
+}
