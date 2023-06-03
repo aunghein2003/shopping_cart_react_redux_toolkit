@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   fetchShopItems,
   getDefaultInitialState,
-} from '../redux/shopItemsSlice';
-import { deleteCart } from '../redux/userSlice';
-import ShopCard from './ShopCard';
-import './shop.css';
+} from "../redux/shopItemsSlice";
+import { deleteCart } from "../redux/userSlice";
+import ShopCard from "./ShopCard";
+import { AiOutlineShoppingCart, AiFillDelete } from "react-icons/ai";
+import "./Shop.css";
 
 const Shop = () => {
   const data = useSelector((state) => state.shop);
@@ -23,27 +24,29 @@ const Shop = () => {
     return () => {
       dispatch(getDefaultInitialState());
     };
-  }, []);
+  }, [dispatch]);
 
   return data.loading ? (
-    <h1>Loading ...</h1>
+    <div className="loading_indicator">
+      <h1>Loading ...</h1>
+    </div>
   ) : data.error ? (
     <h1>{data.error}</h1>
   ) : (
     <>
-      <div className='cart__section'>
+      <div className="cart__section">
         <div>
-          <img src='https://img.icons8.com/external-icongeek26-outline-icongeek26/64/000000/external-cart-user-interface-icongeek26-outline-icongeek26.png' />
+          <AiOutlineShoppingCart />
           <span>Item : {cart.item}</span>
           <span>Total : {cart.price}$</span>
-          <img
+          <AiFillDelete
+            title="Remove Items"
             onClick={deleteCartHandler}
-            className='delete__cart'
-            src='https://img.icons8.com/carbon-copy/100/000000/filled-trash.png'
+            className="delete__cart"
           />
         </div>
       </div>
-      <div className='shop__cart'>
+      <div className="shop__cart">
         {data.data?.map((products) => (
           <ShopCard products={products} key={products.id} />
         ))}

@@ -1,7 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+
+const user = localStorage.getItem("user");
 
 const initialState = {
-  user: null,
+  user: user,
   cart: {
     item: 0,
     price: 0,
@@ -9,11 +11,11 @@ const initialState = {
 };
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     login: (state, action) => {
-      state.user = action.payload;
+      state.user = action.payload.username;
     },
     logout: (state) => {
       state.user = null;
