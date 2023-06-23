@@ -8,6 +8,7 @@ import { deleteCart } from "../redux/userSlice";
 import ShopCard from "./ShopCard";
 import { AiOutlineShoppingCart, AiFillDelete } from "react-icons/ai";
 import "./Shop.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Shop = () => {
   const data = useSelector((state) => state.shop);
@@ -27,22 +28,20 @@ const Shop = () => {
   }, [dispatch]);
 
   return data.loading ? (
-    <div className="loading_indicator">
-      <h1>Loading ...</h1>
-    </div>
+    <LoadingSpinner />
   ) : data.error ? (
     <h1>{data.error}</h1>
   ) : (
     <>
       <div className="cart__section">
         <div>
-          <AiOutlineShoppingCart />
+          <AiOutlineShoppingCart className="shop_cart_icon" />
           <span>Item : {cart.item}</span>
           <span>Total : {cart.price}$</span>
           <AiFillDelete
             title="Remove Items"
             onClick={deleteCartHandler}
-            className="delete__cart"
+            className="delete_cart_icon"
           />
         </div>
       </div>

@@ -21,7 +21,8 @@
   align-items: center;
 }
 
-svg {
+.shop_cart_icon,
+.delete_cart_icon {
   width: 30px;
   height: 30px;
 }

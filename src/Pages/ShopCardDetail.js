@@ -7,6 +7,7 @@ import {
 } from "../redux/shopItemsSlice";
 import { addToCart } from "../redux/userSlice";
 import "./ShopCardDetail.css";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const ShopCardDetail = () => {
   const { productId } = useParams();
@@ -32,9 +33,7 @@ const ShopCardDetail = () => {
   }, [dispatch, productId]);
 
   return loading ? (
-    <div className="loading_indicator">
-      <h1>Loading ...</h1>
-    </div>
+    <LoadingSpinner />
   ) : error ? (
     <h1>{error}</h1>
   ) : (
